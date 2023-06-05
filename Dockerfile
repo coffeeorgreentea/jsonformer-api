@@ -22,7 +22,6 @@ RUN python3 download.py
 
 # Add your custom app code, init() and inference()
 ADD app.py .
-ADD instruct_pipeline.py .
 
 EXPOSE 8000
 
