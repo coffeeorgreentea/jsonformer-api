@@ -1,5 +1,5 @@
 {
-    "name": "Dolly v2.0 3B",
+    "name": "Dolly v2.0 3B Jsonformer",
     "category": "Natural Language",
     "example_input": {
         "prompt": "Generate an example car",
@@ -92,5 +92,5 @@
         "prompt": "Generate an example car",
         "inference_time": 0.6
     },
-    "version": "2"
+    "version": "1"
 }
