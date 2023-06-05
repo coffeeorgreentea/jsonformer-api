@@ -1,0 +1,96 @@
+{
+    "name": "Dolly v2.0 3B",
+    "category": "Natural Language",
+    "example_input": {
+        "prompt": "Generate an example car",
+        "json_schema": {
+            "type": "object",
+            "properties": {
+                "car": {
+                    "type": "object",
+                    "properties": {
+                        "make": {"type": "string"},
+                        "model": {"type": "string"},
+                        "year": {"type": "number"},
+                        "colors": {
+                            "type": "array",
+                            "items": {"type": "string"}
+                        },
+                        "features": {
+                            "type": "object",
+                            "properties": {
+                                "audio": {
+                                    "type": "object",
+                                    "properties": {
+                                        "brand": {"type": "string"},
+                                        "speakers": {"type": "number"},
+                                        "hasBluetooth": {"type": "boolean"}
+                                    }
+                                },
+                                "safety": {
+                                    "type": "object",
+                                    "properties": {
+                                        "airbags": {"type": "number"},
+                                        "parkingSensors": {"type": "boolean"},
+                                        "laneAssist": {"type": "boolean"}
+                                    }
+                                },
+                                "performance": {
+                                    "type": "object",
+                                    "properties": {
+                                        "engine": {"type": "string"},
+                                        "horsepower": {"type": "number"},
+                                        "topSpeed": {"type": "number"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "owner": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {"type": "string"},
+                        "lastName": {"type": "string"},
+                        "age": {"type": "number"}
+                    }
+                }
+            }
+        }
+    },
+    "example_output": {
+        "output": {
+            "car": {
+                "make": "Toyota",
+                "model": "Corolla",
+                "year": 2020,
+                "colors": ["Black", "White"],
+                "features": {
+                    "audio": {
+                        "brand": "Bose",
+                        "speakers": 6,
+                        "hasBluetooth": true
+                    },
+                    "safety": {
+                        "airbags": 6,
+                        "parkingSensors": true,
+                        "laneAssist": true
+                    },
+                    "performance": {
+                        "engine": "1.8L 4-Cylinder",
+                        "horsepower": 139,
+                        "topSpeed": 180
+                    }
+                }
+            },
+            "owner": {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": 30
+            }
+        },
+        "prompt": "Generate an example car",
+        "inference_time": 0.6
+    },
+    "version": "2"
+}
