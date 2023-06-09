@@ -6,6 +6,10 @@ import time
 
 from jsonformer.format import highlight_values
 from jsonformer.main import Jsonformer
+import os
+MODEL_NAME = os.environ.get("MODEL_NAME", "databricks/dolly-v2-3b")
+PORT = os.environ.get("PORT", 8000)
+
 
 app = Potassium("dolly_jsonformer")
 
@@ -13,7 +17,7 @@ app = Potassium("dolly_jsonformer")
 @app.init
 def init():
     device = 0 if torch.cuda.is_available() else -1
-    MODEL_NAME = "databricks/dolly-v2-3b"
+    # MODEL_NAME = "databricks/dolly-v2-3b"
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, padding_side="left")
     model = AutoModelForCausalLM.from_pretrained(
@@ -71,4 +75,4 @@ def handler(context: dict, request: Request) -> Response:
 
 
 if __name__ == "__main__":
-    app.serve()
+    app.serve(port=PORT)
