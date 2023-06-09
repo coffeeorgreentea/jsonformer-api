@@ -6,11 +6,14 @@
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
+import os
+MODEL_NAME = os.environ.get("MODEL_NAME", "databricks/dolly-v2-3b")
+
 
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
-    MODEL_NAME = "databricks/dolly-v2-3b"
+    # MODEL_NAME = "databricks/dolly-v2-3b"
 
     # tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_fast=True, use_cache=True)
