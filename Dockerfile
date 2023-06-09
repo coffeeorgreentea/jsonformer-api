@@ -3,6 +3,10 @@ FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
 
 WORKDIR /
 
+ARG MODEL_NAME=databricks/dolly-v2-3b
+ENV MODEL_NAME=$MODEL_NAME
+
+
 # Install git
 RUN apt-get update && apt-get install -y git
 
