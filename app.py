@@ -4,7 +4,6 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 import time
 
-from jsonformer.format import highlight_values
 from jsonformer.main import Jsonformer
 import os
 MODEL_NAME = os.environ.get("MODEL_NAME", "databricks/dolly-v2-3b")
@@ -50,7 +49,8 @@ def handler(context: dict, request: Request) -> Response:
             },
             status=400,
         )
-
+    
+     
     builder = Jsonformer(
         model=model,
         tokenizer=tokenizer,
@@ -58,10 +58,16 @@ def handler(context: dict, request: Request) -> Response:
         prompt=prompt,
     )
 
-    output = builder()
-
-    highlight_values(output)
-
+    try:
+        output = builder()
+    except Exception as e:
+        return Response(
+            json={
+                "error": str(e) + " " + "Builder failed. Please check the prompt and json_schema."
+            },
+            status=400,
+        )
+    
     t_2 = time.time()
 
     return Response(
